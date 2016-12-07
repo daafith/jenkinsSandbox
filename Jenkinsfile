@@ -22,4 +22,8 @@ node {
   }
    echo 'I built and unit tested stuff'
 
+  stage('Results') {
+    junit '**/target/surefire-reports/TEST-*.xml'
+    archive 'target/*.jar'
+  }
 }

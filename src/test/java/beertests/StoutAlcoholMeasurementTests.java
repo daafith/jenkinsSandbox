@@ -23,7 +23,9 @@ public class StoutAlcoholMeasurementTests {
   
   @Test
   public void twenty_stouts_should_have_acceptable_alcohol_by_volume_percentage() {
-    assertThat(new Stout().getAlcoholByVolume(), closeTo(6.65, 1.5));
+    double alcoholByVolume = new Stout().getAlcoholByVolume();
+    System.out.println(alcoholByVolume);
+    assertThat(alcoholByVolume, closeTo(6.65, 1.5));
   }
 
 }

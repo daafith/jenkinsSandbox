@@ -2,11 +2,11 @@ node {
    
    echo 'Hello World'
    
-   stage 'CheckOut' {
+   stage 'checkout' {
      checkout scm
    }
    
-   stage 'Build' {
+   stage 'build' {
      echo 'Bye World'
    }
    

@@ -1,4 +1,4 @@
-node('maven3') {
+node {
   def mvnHome
   stage('Preparation') { // for display purposes
     // Get the Maven tool.

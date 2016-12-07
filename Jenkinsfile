@@ -15,14 +15,11 @@ node {
 
   stage('Build') {
     if (isUnix()) {
-      sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean verify"
+      sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean test"
     } else {
-      bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean verify/)
+      bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean test/)
     }
   }
-   echo 'I built stuff'
-  stage('Results') {
-    junit '**/target/surefire-reports/TEST-*.xml'
-    archive 'target/*.jar'
-  }
+   echo 'I built and unit tested stuff'
+
 }

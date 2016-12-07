@@ -1,7 +1,6 @@
 node {
-  git url: 'https://github.com/daafith/jenkinsSandbox.git'
-  def mvnHome = tool 'M3'
-  sh "${mvnHome}/bin/mvn -B -Dmaven.test.failure.ignore verify"
-  step([$class: 'JUnitResultArchiver', testResults:
-'**/target/foobar/TEST-*.xml'])
+  checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/daafith/jenkinsSandbox.git']]])
+  
+  echo 'I checked stuff out'
+
 }

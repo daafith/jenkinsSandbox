@@ -1,10 +1,11 @@
 node {
    
+   echo 'Hello World'
+   
    stage 'Checkout'
    checkout scm
 
    stage 'Build'
-   // Run the maven build and unit tests
-   sh "mvn clean install"
+   echo 'Bye World'
    
 }

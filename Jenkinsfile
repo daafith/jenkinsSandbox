@@ -1,6 +1,6 @@
 node('master'){
   def mvnHome
-  stage('Preparation') { // for display purposes
+  stage('Preparation') {
     // Get the Maven tool.
     // ** NOTE: This 'M3' Maven tool must be configured
     // **       in the global configuration.
@@ -20,10 +20,9 @@ node('master'){
       bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean test/)
     }
   }
-   echo 'I built and unit tested stuff'
+  echo 'I built and unit tested stuff'
 
   stage('Results') {
     junit '**/target/surefire-reports/TEST-*.xml'
-    archive 'target/*.jar'
   }
 }

@@ -14,7 +14,7 @@ import org.junit.runners.Parameterized.Parameters;
 import app.Stout;
 
 @RunWith(Parameterized.class)
-public class StoutAlcoholMeasurementTests {
+public class StoutAlcoholMeasurementTest {
 
   @Parameters
   public static List<Object[]> data() {

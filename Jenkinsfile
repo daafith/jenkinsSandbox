@@ -13,11 +13,16 @@ node {
   }
   echo 'I checked stuff out'
 
- stage('Build') {
-  if (isUnix()) {
-    sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
-  } else {
-    bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
+  stage('Build') {
+    if (isUnix()) {
+      sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean verify"
+    } else {
+      bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean verify/)
+    }
   }
-}
+   echo 'I built stuff'
+  stage('Results') {
+    junit '**/target/surefire-reports/TEST-*.xml'
+    archive 'target/*.jar'
+  }
 }

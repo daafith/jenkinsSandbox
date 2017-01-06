@@ -34,6 +34,6 @@ node('master'){
 
   stage('Results') {
     junit '**/target/surefire-reports/TEST-*.xml'
-    pitest '**/target/pit-reports/**/mutations.xml'
+    junit '**/target/pit-reports/**/mutations.xml'
   }
 }

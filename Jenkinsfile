@@ -34,6 +34,5 @@ node('master'){
 
   stage('Results') {
     junit '**/target/surefire-reports/TEST-*.xml'
-    junit '**/target/pit-reports/**/index.html'
   }
 }

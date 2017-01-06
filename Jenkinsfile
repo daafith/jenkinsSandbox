@@ -22,6 +22,16 @@ node('master'){
   }
   echo 'I built and unit tested stuff'
 
+  stage('Analyze') {
+  	 if (isUnix()) {
+      sh "'${mvnHome}/bin/mvn' -DwithHistory org.pitest:pitest-maven:mutationCoverage"
+    } else {
+      bat(/"${mvnHome}\bin\mvn" -DwithHistory org.pitest:pitest-maven:mutationCoverage/)
+    }
+  }
+  
+  echo 'I checked the mutation coverage'
+
   stage('Results') {
     junit '**/target/surefire-reports/TEST-*.xml'
   }

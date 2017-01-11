@@ -23,23 +23,27 @@ node('master'){
   echo 'I built and unit tested stuff'
 
   stage('Mutation coverage') {
+
+ 
     if (isUnix()) {
       sh "'${mvnHome}/bin/mvn' org.pitest:pitest-maven:mutationCoverage"
     } else {
       bat(/"${mvnHome}\bin\mvn" org.pitest:pitest-maven:mutationCoverage/)
     }
-  }
-  
-  echo 'I checked the mutation coverage'
 
-  stage('Results') {
-    junit '**/target/surefire-reports/TEST-*.xml'
-   	publishHTML([allowMissing: false,
+    publishHTML([allowMissing: false,
                  alwaysLinkToLastBuild: false,
  	             keepAll: false,
                  reportDir: '**/target/pit-reports/**/',
                  reportFiles: 'index.html',
                  reportName: 'PIT Report'
                  ])
+  }
+  
+  echo 'I checked the mutation coverage'
+
+  stage('Results') {
+    junit '**/target/surefire-reports/TEST-*.xml'
+   
   }
 }

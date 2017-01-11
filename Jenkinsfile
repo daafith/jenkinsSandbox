@@ -26,9 +26,9 @@ node('master'){
 
  
     if (isUnix()) {
-      sh "'${mvnHome}/bin/mvn' org.pitest:pitest-maven:mutationCoverage -DmutationThreshold=55"
+      sh "'${mvnHome}/bin/mvn' org.pitest:pitest-maven:mutationCoverage"
     } else {
-      bat(/"${mvnHome}\bin\mvn" org.pitest:pitest-maven:mutationCoverage -DmutationThreshold=55/)
+      bat(/"${mvnHome}\bin\mvn" org.pitest:pitest-maven:mutationCoverage/)
     }
 
     publishHTML([allowMissing: true,
@@ -38,7 +38,6 @@ node('master'){
                  reportFiles: 'index.html',
                  reportName: 'PIT Report'
                  ])
-    
   }
   
   echo 'I checked the mutation coverage'

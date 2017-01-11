@@ -38,9 +38,9 @@ node('master'){
 
   stage('Results') {
     junit '**/target/surefire-reports/TEST-*.xml'
-    publishHTML([allowMissing: true,
+     publishHTML([allowMissing: true,
                  alwaysLinkToLastBuild: true,
- 	             keepAll: false,
+ 	             keepAll: true,
                  reportDir: '**/target/pit-reports/**/',
                  reportFiles: 'index.html',
                  reportName: 'PIT Report'

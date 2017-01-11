@@ -31,19 +31,20 @@ node('master'){
       bat(/"${mvnHome}\bin\mvn" org.pitest:pitest-maven:mutationCoverage/)
     }
 
-    publishHTML([allowMissing: true,
-                 alwaysLinkToLastBuild: true,
- 	             keepAll: true,
-                 reportDir: '**/target/pit-reports/**/',
-                 reportFiles: 'index.html',
-                 reportName: 'PIT Report'
-                 ])
+   
   }
   
   echo 'I checked the mutation coverage'
 
   stage('Results') {
     junit '**/target/surefire-reports/TEST-*.xml'
+     publishHTML([allowMissing: true,
+                 alwaysLinkToLastBuild: true,
+ 	             keepAll: true,
+                 reportDir: '**/target/pit-reports/**/',
+                 reportFiles: 'index.html',
+                 reportName: 'PIT Report'
+                 ])
    
   }
 }

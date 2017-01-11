@@ -24,9 +24,9 @@ node('master'){
 
   stage('Analyze') {
   	 if (isUnix()) {
-      sh "'${mvnHome}/bin/mvn' -DwithHistory org.pitest:pitest-maven:mutationCoverage"
+      sh "'${mvnHome}/bin/mvn' org.pitest:pitest-maven:mutationCoverage"
     } else {
-      bat(/"${mvnHome}\bin\mvn" -DwithHistory org.pitest:pitest-maven:mutationCoverage/)
+      bat(/"${mvnHome}\bin\mvn" org.pitest:pitest-maven:mutationCoverage/)
     }
   }
   
@@ -34,6 +34,6 @@ node('master'){
 
   stage('Results') {
     junit '**/target/surefire-reports/TEST-*.xml'
-    publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '**/target/pit-reports/**/', reportFiles: 'index.html', reportName: 'PIT Report'])
+    publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '/target/pit-reports/', reportFiles: 'index.html', reportName: 'PIT Report'])
   }
 }

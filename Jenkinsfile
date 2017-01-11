@@ -31,9 +31,9 @@ node('master'){
       bat(/"${mvnHome}\bin\mvn" org.pitest:pitest-maven:mutationCoverage/)
     }
 
-    publishHTML([allowMissing: false,
-                 alwaysLinkToLastBuild: false,
- 	             keepAll: false,
+    publishHTML([allowMissing: true,
+                 alwaysLinkToLastBuild: true,
+ 	             keepAll: true,
                  reportDir: '**/target/pit-reports/**/',
                  reportFiles: 'index.html',
                  reportName: 'PIT Report'

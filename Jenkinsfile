@@ -26,9 +26,9 @@ node('master'){
 
  
     if (isUnix()) {
-      sh "'${mvnHome}/bin/mvn' org.pitest:pitest-maven:mutationCoverage"
+      sh "'${mvnHome}/bin/mvn' -DtimestampedReports=false org.pitest:pitest-maven:mutationCoverage"
     } else {
-      bat(/"${mvnHome}\bin\mvn" org.pitest:pitest-maven:mutationCoverage/)
+      bat(/"${mvnHome}\bin\mvn" -DtimestampedReports=false org.pitest:pitest-maven:mutationCoverage/)
     }
 
    
@@ -41,7 +41,7 @@ node('master'){
      publishHTML([allowMissing: false,
                  alwaysLinkToLastBuild: true,
  	             keepAll: true,
-                 reportDir: 'target/pit-reports/**/',
+                 reportDir: 'target/pit-reports',
                  reportFiles: 'index.html',
                  reportName: 'PIT Report'
                  ])

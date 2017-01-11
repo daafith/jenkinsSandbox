@@ -41,7 +41,7 @@ node('master'){
      publishHTML([allowMissing: false,
                  alwaysLinkToLastBuild: true,
  	             keepAll: true,
-                 reportDir: '**/target/pit-reports/**/',
+                 reportDir: 'target/pit-reports/**/',
                  reportFiles: 'index.html',
                  reportName: 'PIT Report'
                  ])

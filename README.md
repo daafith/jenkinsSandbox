@@ -1,3 +1,3 @@
 # jenkinsSandbox
 
-For fiddling with the Jenkinsfile
+For fiddling with the Jenkinsfile and whatever you want to try out.

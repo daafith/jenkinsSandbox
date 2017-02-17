@@ -15,9 +15,9 @@ node('master'){
 
   stage('Build') {
     if (isUnix()) {
-      sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean test"
+      sh "'${mvnHome}/bin/mvn' clean test"
     } else {
-      bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean test/)
+      bat(/"${mvnHome}\bin\mvn" clean test/)
     }
   }
   echo 'I built and unit tested stuff'

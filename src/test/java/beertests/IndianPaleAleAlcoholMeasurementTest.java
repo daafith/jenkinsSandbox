@@ -6,7 +6,6 @@ import static org.hamcrest.Matchers.closeTo;
 import java.util.Arrays;
 import java.util.List;
 
-import org.hamcrest.Matchers;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -27,11 +26,6 @@ public class IndianPaleAleAlcoholMeasurementTest {
     double alcoholByVolume = new IndianPaleAle().getAlcoholByVolume();
     System.out.println(alcoholByVolume);
     assertThat(alcoholByVolume, closeTo(3.75, 0.5));
-  }
-  
-  @Test
-  public void fout() {
-    assertThat(true, Matchers.equalTo(false));
   }
 
 }
